@@ -4,20 +4,19 @@ from yt_dlp import YoutubeDL
 import os
 import tempfile
 import shutil
-#from app import app as application  # 'app' is the name of your Flask app in 'app.py'
 
 app = Flask(__name__)
 
-# Allow CORS for specific domains (including both http and https)
-CORS(app, resources={r"/*": {"origins": "https://smbvd2mp4.com"}})
+# Allow CORS for specific domains
+CORS(app, resources={r"/*": {"origins": "https://v2mp4.com"}})
 
 # Directory to save downloads
-DOWNLOAD_DIR = "downloads"
+DOWNLOAD_DIR = "/var/www/v2mp4.com/downloads"
 if not os.path.exists(DOWNLOAD_DIR):
     os.makedirs(DOWNLOAD_DIR)
 
 # FFmpeg path
-FFMPEG_PATH = r"C:\Users\abida\OneDrive\Desktop\ffmpeg-2024-08-28-git-b730defd52-full_build\bin"
+FFMPEG_PATH = "/usr/bin/ffmpeg"  # Correct for Linux
 
 # Helper function to download video/audio
 def download_media(url: str, format_type: str) -> str:
@@ -62,7 +61,7 @@ def download():
 def get_video_info():
     data = request.json
     url = data.get('url')
-    
+
     try:
         with YoutubeDL({'noplaylist': True}) as ydl:
             info_dict = ydl.extract_info(url, download=False)
