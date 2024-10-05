@@ -147,7 +147,7 @@
                     return; // Exit early if input is empty
                 }
 
-                fetch('https://smbvd2mp4.com/get_video_info', {
+                fetch('https://v2mp4.com/get_video_info', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -195,7 +195,7 @@
                 document.getElementById('progressPercentage').innerText = "Downloading...";
                 document.getElementById('progressBar').style.width = "0%";
 
-                fetch('https://smbvd2mp4.com/download-file', {
+                fetch('https://v2mp4.com/download-file', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

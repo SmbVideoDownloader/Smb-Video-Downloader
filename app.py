@@ -18,6 +18,10 @@ if not os.path.exists(DOWNLOAD_DIR):
 # FFmpeg path
 FFMPEG_PATH = "/usr/bin/ffmpeg"  # Correct for Linux
 
+@app.route('/')
+def home():
+    return "Hello, this is the homepage!"
+
 # Helper function to download video/audio
 def download_media(url: str, format_type: str) -> str:
     temp_dir = tempfile.mkdtemp()
